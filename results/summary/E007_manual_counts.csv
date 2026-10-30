@@ -1,0 +1,13 @@
+selection,segment,structure,selected,reviewed,any_issue_supported,any_uncertainty,detection_or_foot_issue_支持,detection_or_foot_issue_不支持,detection_or_foot_issue_不确定,detection_or_foot_issue_不适用,cross_view_mixed_identity_支持,cross_view_mixed_identity_不支持,cross_view_mixed_identity_不确定,cross_view_mixed_identity_不适用,temporal_identity_change_支持,temporal_identity_change_不支持,temporal_identity_change_不确定,temporal_identity_change_不适用
+random,old_development,C3_new,4,4,0,3,0,3,1,0,0,0,0,4,0,1,3,0
+random,old_development,C3_joined,4,4,3,1,2,2,0,0,1,2,1,0,0,4,0,0
+random,old_development,no_C3,4,4,1,2,1,2,1,0,0,0,0,4,0,3,1,0
+purpose,old_development,fixed four slots,4,4,3,2,3,1,0,0,0,0,2,2,0,0,1,3
+random,new_development,C3_new,4,4,2,4,2,1,1,0,0,0,0,4,0,0,4,0
+random,new_development,C3_joined,4,4,2,2,1,3,0,0,1,3,0,0,0,2,2,0
+random,new_development,no_C3,4,4,4,3,3,1,0,0,0,0,0,4,1,0,3,0
+purpose,new_development,fixed four slots,4,4,0,1,0,3,1,0,0,2,0,2,0,1,0,3
+random,seen_reference,C3_new,4,4,1,1,0,3,1,0,0,0,0,4,1,3,0,0
+random,seen_reference,C3_joined,4,4,2,1,1,3,0,0,2,2,0,0,0,2,1,1
+random,seen_reference,no_C3,4,4,2,0,2,2,0,0,0,0,0,4,1,3,0,0
+purpose,seen_reference,fixed four slots,4,4,0,0,0,4,0,0,0,1,0,3,0,1,0,3

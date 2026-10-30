@@ -1,0 +1,13 @@
+segment,criterion,actual,relation,threshold,defined,passed
+old_development,IDF1 gain pp,-0.8342022940563076,>=,-1.0,True,True
+old_development,Spatial precision gain pp,0.03783579265985715,>=,-1.0,True,True
+old_development,Spatial recall gain pp,0.04646840148698761,>=,-1.0,True,True
+old_development,Matched distance P90 increase m,-0.0008918130030092231,<=,0.05,True,True
+new_development,IDF1 gain pp,-1.4872202230630127,>=,-1.0,True,False
+new_development,Spatial precision gain pp,-0.04108810026851595,>=,-1.0,True,True
+new_development,Spatial recall gain pp,0.0,>=,-1.0,True,True
+new_development,Matched distance P90 increase m,-0.014034180664672657,<=,0.05,True,True
+seen_reference,IDF1 gain pp,2.3396758280479215,>=,3.0,True,False
+seen_reference,Spatial precision gain pp,-0.05605381165919576,>=,-1.0,True,True
+seen_reference,Spatial recall gain pp,-0.056705415367164225,>=,-1.0,True,True
+seen_reference,Matched distance P90 increase m,-0.006614689009481034,<=,0.05,True,True

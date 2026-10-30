@@ -1,0 +1,7 @@
+segment,variant,idf1,idp,idr,idtp,idfp,idfn,num_objects,num_predictions,num_unique_objects,num_switches,num_fragmentations,num_frames,observed_excluded_outside_roi,source_tracks
+old_development,B3,0.5547445255474452,0.5032160423760877,0.6180297397769516,1330,1313,822,2152,2643,110,143,102,100,0,outputs/E005_temporal_assignment/old_development/B3/tracks.csv
+old_development,B3_GLOBAL,0.527215849843587,0.4782444192205827,0.587360594795539,1264,1379,888,2152,2643,110,149,101,100,0,outputs/E005_temporal_assignment/old_development/B3_GLOBAL/tracks.csv
+new_development,B3,0.6017344896597732,0.5537139349294046,0.6588750913075238,902,727,467,1369,1629,73,88,64,60,2,outputs/E005_temporal_assignment/new_development/B3/tracks.csv
+new_development,B3_GLOBAL,0.5428476158719573,0.49938650306748467,0.5945945945945946,814,816,555,1369,1630,73,102,67,60,1,outputs/E005_temporal_assignment/new_development/B3_GLOBAL/tracks.csv
+seen_reference,B3,0.49020436927413674,0.4873878923766816,0.49305358661752197,1739,1829,1788,3527,3568,126,243,171,120,1,outputs/E005_temporal_assignment/seen_reference/B3/tracks.csv
+seen_reference,B3_GLOBAL,0.4825933756166314,0.4798206278026906,0.48539835554295435,1712,1856,1815,3527,3568,126,256,170,120,1,outputs/E005_temporal_assignment/seen_reference/B3_GLOBAL/tracks.csv

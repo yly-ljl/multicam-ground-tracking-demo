@@ -1,0 +1,10 @@
+segment,structure,N,fully_connected,B3_observed_in_roi,B3_raw_matched,B3_observed_matched,B3_IDTP,B2_parent_raw_matched,B2_parent_observed_matched,B2_parent_IDTP,GT_near_0,GT_near_1,GT_near_2plus,region_crossings
+old_development,C3_new,764,764,764,325,324,259,0,0,0,377,275,112,0
+old_development,C3_joined,546,546,546,478,479,371,489,487,423,48,266,232,7
+old_development,no_C3,1333,1333,1333,966,971,700,977,981,782,276,539,518,0
+new_development,C3_new,421,421,419,159,161,125,0,0,0,202,168,51,0
+new_development,C3_joined,416,416,416,363,363,275,368,366,283,39,243,134,3
+new_development,no_C3,794,794,794,566,567,502,574,575,514,169,354,271,0
+seen_reference,C3_new,732,732,731,351,354,176,0,0,0,255,318,159,0
+seen_reference,C3_joined,848,848,848,762,759,425,756,760,512,26,567,255,18
+seen_reference,no_C3,1989,1989,1989,1515,1521,1138,1555,1558,1180,260,926,803,0
