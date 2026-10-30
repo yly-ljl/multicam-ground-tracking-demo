@@ -1,0 +1,16 @@
+.venv/
+.cache/
+__pycache__/
+*.py[cod]
+data/
+weights/
+outputs/
+runs/
+.idea/
+.vscode/
+prompt/
+my_learning/
+*.zip
+*.mp4
+*.jpg
+*.png

@@ -1,0 +1,147 @@
+{
+  "data_root": "data/Wildtrack_dataset",
+  "weights": "weights/yolo11n.pt",
+  "frame_start": 0,
+  "frame_stop": 500,
+  "frame_step": 5,
+  "frame_number_hz": 10,
+  "diagnostic_frames": [
+    0,
+    5,
+    10
+  ],
+  "roi_m": [
+    -3.0,
+    9.0,
+    -9.0,
+    27.0
+  ],
+  "detector": {
+    "device": 0,
+    "classes": [
+      0
+    ],
+    "imgsz": 640,
+    "conf": 0.25,
+    "iou": 0.7,
+    "half": false
+  },
+  "tracker": {
+    "tick_seconds": 0.5,
+    "distance_threshold_m": 1.5,
+    "hit_counter_max": 4,
+    "initialization_delay": 0,
+    "measurement_std_m": 0.35,
+    "acceleration_std_mps2": 1.0,
+    "initial_position_std_m": 0.5,
+    "initial_velocity_std_mps": 2.0
+  },
+  "video": {
+    "fps": 2.0,
+    "width": 1920,
+    "height": 1080,
+    "trail_seconds": 5.0
+  },
+  "screenshots": [
+    0,
+    100,
+    250,
+    495
+  ],
+  "experiment": "E005",
+  "output": "outputs/E005_temporal_assignment",
+  "cameras": [
+    "C1",
+    "C2",
+    "C3"
+  ],
+  "calibrations": {
+    "C1": "CVLab1",
+    "C2": "CVLab2",
+    "C3": "CVLab3"
+  },
+  "variants": {
+    "B3": [
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "B3_GLOBAL": [
+      "C1",
+      "C2",
+      "C3"
+    ]
+  },
+  "e001_output": "outputs/E001_c1_baseline",
+  "fusion_distance_m": 0.75,
+  "evaluation": {
+    "distance_threshold_m": 1.0,
+    "regions": [
+      "full_roi",
+      "common_projected"
+    ],
+    "gt_rule": "All GT ground points inside fixed ROI, independent of selected experiment cameras.",
+    "common_rule": "Positive camera depth and projected ground point in [0,1920)x[0,1080) for every C1/C2/C3; identical mask for GT and all prediction pools."
+  },
+  "segment": "development",
+  "local_comparison_sources": true,
+  "detection_cameras": [
+    "C1",
+    "C2",
+    "C3"
+  ],
+  "association_methods": {
+    "B3": "greedy",
+    "B3_GLOBAL": "gated_global"
+  },
+  "gate_m": 1.0,
+  "pool": "filtered_observed",
+  "solver": "scipy",
+  "max_switch_time": "infinity",
+  "segments": {
+    "old_development": {
+      "frame_start": 0,
+      "frame_stop": 500,
+      "frame_step": 5,
+      "group_source": "outputs/E003_improvement/development/B3/fused_observations.csv",
+      "member_source": "outputs/E003_improvement/development/B3/fusion_members.csv",
+      "baseline_tracks": "outputs/E003_improvement/development/B3/tracks.csv",
+      "track_sources": {
+        "B3": "outputs/E005_temporal_assignment/old_development/B3/tracks.csv",
+        "B3_GLOBAL": "outputs/E005_temporal_assignment/old_development/B3_GLOBAL/tracks.csv"
+      }
+    },
+    "new_development": {
+      "frame_start": 500,
+      "frame_stop": 800,
+      "frame_step": 5,
+      "group_source": "outputs/E004_identity/new_development/B3/fused_observations.csv",
+      "member_source": "outputs/E004_identity/new_development/B3/fusion_members.csv",
+      "baseline_tracks": "outputs/E004_identity/new_development/B3/tracks.csv",
+      "track_sources": {
+        "B3": "outputs/E005_temporal_assignment/new_development/B3/tracks.csv",
+        "B3_GLOBAL": "outputs/E005_temporal_assignment/new_development/B3_GLOBAL/tracks.csv"
+      }
+    },
+    "seen_reference": {
+      "frame_start": 800,
+      "frame_stop": 1400,
+      "frame_step": 5,
+      "group_source": "outputs/E003_improvement/validation/B3/fused_observations.csv",
+      "member_source": "outputs/E003_improvement/validation/B3/fusion_members.csv",
+      "baseline_tracks": "outputs/E003_improvement/validation/B3/tracks.csv",
+      "track_sources": {
+        "B3": "outputs/E005_temporal_assignment/seen_reference/B3/tracks.csv",
+        "B3_GLOBAL": "outputs/E005_temporal_assignment/seen_reference/B3_GLOBAL/tracks.csv"
+      }
+    }
+  },
+  "adoption_thresholds": {
+    "reference_idf1_gain_pp": 3.0,
+    "development_min_idf1_gain_pp": -1.0,
+    "min_spatial_precision_gain_pp": -1.0,
+    "min_spatial_recall_gain_pp": -1.0,
+    "max_p90_increase_m": 0.05
+  },
+  "heldout_enabled": false
+}

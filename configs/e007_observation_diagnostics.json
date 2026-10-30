@@ -1,0 +1,137 @@
+{
+  "experiment": "E007",
+  "output": "outputs/E007_observation_diagnosis",
+  "data_root": "data/Wildtrack_dataset",
+  "roi_m": [
+    -3,
+    9,
+    -9,
+    27
+  ],
+  "gate_m": 1.0,
+  "seed": 20261017,
+  "segment_order": [
+    "old_development",
+    "new_development",
+    "seen_reference"
+  ],
+  "structure_order": [
+    "C3_new",
+    "C3_joined",
+    "no_C3"
+  ],
+  "random_per_stratum": 4,
+  "purpose_order": [
+    "new_coverage",
+    "identity_loss",
+    "success_control",
+    "largest_displacement"
+  ],
+  "quantiles": [
+    0,
+    0.25,
+    0.5,
+    0.75,
+    0.9,
+    1
+  ],
+  "image_hw": [
+    1080,
+    1920
+  ],
+  "max_images_times_per_case": 3,
+  "max_output_bytes": 314572800,
+  "max_replay_ticks": 560,
+  "heldout_enabled": false,
+  "calibrations": {
+    "C1": "CVLab1",
+    "C2": "CVLab2",
+    "C3": "CVLab3"
+  },
+  "segments": {
+    "old_development": {
+      "frame_start": 0,
+      "frame_stop": 500,
+      "frame_step": 5,
+      "spatial_matches": "outputs/E003_improvement/development/evaluation_matches.csv",
+      "spatial_summary": "outputs/E003_improvement/development/comparison.csv",
+      "spatial_per_frame": "outputs/E003_improvement/development/evaluation_per_frame.csv",
+      "observation_sources": {
+        "C1": "outputs/E001_c1_baseline/observations.csv",
+        "C2": "outputs/E002_multicam/views/C2/observations.csv",
+        "C3": "outputs/E002_multicam/views/C3/observations.csv"
+      },
+      "conditions": {
+        "B2": {
+          "groups": "outputs/E003_improvement/development/B2/fused_observations.csv",
+          "members": "outputs/E003_improvement/development/B2/fusion_members.csv",
+          "tracks": "outputs/E003_improvement/development/B2/tracks.csv",
+          "identity_root": "outputs/E004_identity/old_development/B2"
+        },
+        "B3": {
+          "groups": "outputs/E003_improvement/development/B3/fused_observations.csv",
+          "members": "outputs/E003_improvement/development/B3/fusion_members.csv",
+          "tracks": "outputs/E003_improvement/development/B3/tracks.csv",
+          "identity_root": "outputs/E004_identity/old_development/B3"
+        }
+      },
+      "B3_associations": "outputs/E004_identity/association_replay/old_development/associations.jsonl"
+    },
+    "new_development": {
+      "frame_start": 500,
+      "frame_stop": 800,
+      "frame_step": 5,
+      "spatial_matches": "outputs/E004_identity/new_development/evaluation_matches.csv",
+      "spatial_summary": "outputs/E004_identity/new_development/comparison.csv",
+      "spatial_per_frame": "outputs/E004_identity/new_development/evaluation_per_frame.csv",
+      "observation_sources": {
+        "C1": "outputs/E004_identity/new_development/views/C1/observations.csv",
+        "C2": "outputs/E004_identity/new_development/views/C2/observations.csv",
+        "C3": "outputs/E004_identity/new_development/views/C3/observations.csv"
+      },
+      "conditions": {
+        "B2": {
+          "groups": "outputs/E004_identity/new_development/B2/fused_observations.csv",
+          "members": "outputs/E004_identity/new_development/B2/fusion_members.csv",
+          "tracks": "outputs/E004_identity/new_development/B2/tracks.csv",
+          "identity_root": "outputs/E004_identity/new_development/B2"
+        },
+        "B3": {
+          "groups": "outputs/E004_identity/new_development/B3/fused_observations.csv",
+          "members": "outputs/E004_identity/new_development/B3/fusion_members.csv",
+          "tracks": "outputs/E004_identity/new_development/B3/tracks.csv",
+          "identity_root": "outputs/E004_identity/new_development/B3"
+        }
+      },
+      "B3_associations": "outputs/E004_identity/association_replay/new_development/associations.jsonl"
+    },
+    "seen_reference": {
+      "frame_start": 800,
+      "frame_stop": 1400,
+      "frame_step": 5,
+      "spatial_matches": "outputs/E003_improvement/validation/evaluation_matches.csv",
+      "spatial_summary": "outputs/E003_improvement/validation/comparison.csv",
+      "spatial_per_frame": "outputs/E003_improvement/validation/evaluation_per_frame.csv",
+      "observation_sources": {
+        "C1": "outputs/E003_improvement/validation/views/C1/observations.csv",
+        "C2": "outputs/E003_improvement/validation/views/C2/observations.csv",
+        "C3": "outputs/E003_improvement/validation/views/C3/observations.csv"
+      },
+      "conditions": {
+        "B2": {
+          "groups": "outputs/E003_improvement/validation/B2/fused_observations.csv",
+          "members": "outputs/E003_improvement/validation/B2/fusion_members.csv",
+          "tracks": "outputs/E003_improvement/validation/B2/tracks.csv",
+          "identity_root": "outputs/E004_identity/seen_reference/B2"
+        },
+        "B3": {
+          "groups": "outputs/E003_improvement/validation/B3/fused_observations.csv",
+          "members": "outputs/E003_improvement/validation/B3/fusion_members.csv",
+          "tracks": "outputs/E003_improvement/validation/B3/tracks.csv",
+          "identity_root": "outputs/E004_identity/seen_reference/B3"
+        }
+      },
+      "B3_associations": "outputs/E004_identity/association_replay/seen_reference/associations.jsonl"
+    }
+  }
+}

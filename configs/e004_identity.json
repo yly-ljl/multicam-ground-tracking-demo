@@ -1,0 +1,48 @@
+{
+  "experiment": "E004_IDENTITY",
+  "output": "outputs/E004_identity",
+  "data_root": "data/Wildtrack_dataset",
+  "roi_m": [
+    -3.0,
+    9.0,
+    -9.0,
+    27.0
+  ],
+  "gate_m": 1.0,
+  "frame_number_hz": 10,
+  "max_switch_time": "infinity",
+  "solver": "scipy",
+  "pool": "filtered_observed",
+  "segments": {
+    "old_development": {
+      "frame_start": 0,
+      "frame_stop": 500,
+      "frame_step": 5,
+      "track_sources": {
+        "C1": "outputs/E003_improvement/development/C1/tracks.csv",
+        "B2": "outputs/E003_improvement/development/B2/tracks.csv",
+        "B3": "outputs/E003_improvement/development/B3/tracks.csv"
+      }
+    },
+    "new_development": {
+      "frame_start": 500,
+      "frame_stop": 800,
+      "frame_step": 5,
+      "track_sources": {
+        "C1": "outputs/E004_identity/new_development/C1/tracks.csv",
+        "B2": "outputs/E004_identity/new_development/B2/tracks.csv",
+        "B3": "outputs/E004_identity/new_development/B3/tracks.csv"
+      }
+    },
+    "seen_reference": {
+      "frame_start": 800,
+      "frame_stop": 1400,
+      "frame_step": 5,
+      "track_sources": {
+        "C1": "outputs/E003_improvement/validation/C1/tracks.csv",
+        "B2": "outputs/E003_improvement/validation/B2/tracks.csv",
+        "B3": "outputs/E003_improvement/validation/B3/tracks.csv"
+      }
+    }
+  }
+}

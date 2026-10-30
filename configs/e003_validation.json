@@ -1,0 +1,117 @@
+{
+  "data_root": "data/Wildtrack_dataset",
+  "weights": "weights/yolo11n.pt",
+  "frame_start": 800,
+  "frame_stop": 1400,
+  "frame_step": 5,
+  "frame_number_hz": 10,
+  "diagnostic_frames": [
+    0,
+    5,
+    10
+  ],
+  "roi_m": [
+    -3.0,
+    9.0,
+    -9.0,
+    27.0
+  ],
+  "detector": {
+    "device": 0,
+    "classes": [
+      0
+    ],
+    "imgsz": 640,
+    "conf": 0.25,
+    "iou": 0.7,
+    "half": false
+  },
+  "tracker": {
+    "tick_seconds": 0.5,
+    "distance_threshold_m": 1.5,
+    "hit_counter_max": 4,
+    "initialization_delay": 0,
+    "measurement_std_m": 0.35,
+    "acceleration_std_mps2": 1.0,
+    "initial_position_std_m": 0.5,
+    "initial_velocity_std_mps": 2.0
+  },
+  "video": {
+    "fps": 2.0,
+    "width": 1920,
+    "height": 1080,
+    "trail_seconds": 5.0
+  },
+  "screenshots": [
+    800,
+    900,
+    1050,
+    1395
+  ],
+  "experiment": "E003",
+  "output": "outputs/E003_improvement/validation",
+  "cameras": [
+    "C1",
+    "C2",
+    "C3"
+  ],
+  "calibrations": {
+    "C1": "CVLab1",
+    "C2": "CVLab2",
+    "C3": "CVLab3"
+  },
+  "variants": {
+    "C1": [
+      "C1"
+    ],
+    "B2": [
+      "C1",
+      "C2"
+    ],
+    "W2": [
+      "C1",
+      "C2"
+    ],
+    "B3": [
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "W3": [
+      "C1",
+      "C2",
+      "C3"
+    ]
+  },
+  "e001_output": "outputs/E001_c1_baseline",
+  "fusion_distance_m": 0.75,
+  "evaluation": {
+    "distance_threshold_m": 1.0,
+    "regions": [
+      "full_roi",
+      "common_projected"
+    ],
+    "gt_rule": "All GT ground points inside fixed ROI, independent of selected experiment cameras.",
+    "common_rule": "Positive camera depth and projected ground point in [0,1920)x[0,1080) for every C1/C2/C3; identical mask for GT and all prediction pools."
+  },
+  "segment": "validation",
+  "local_comparison_sources": true,
+  "media_variants": [
+    "B3",
+    "W3"
+  ],
+  "detection_cameras": [
+    "C1",
+    "C2",
+    "C3"
+  ],
+  "observation_sources": {
+    "C1": "outputs/E003_improvement/validation/views/C1/observations.csv",
+    "C2": "outputs/E003_improvement/validation/views/C2/observations.csv",
+    "C3": "outputs/E003_improvement/validation/views/C3/observations.csv"
+  },
+  "weighted_variants": [
+    "W2",
+    "W3"
+  ]
+}

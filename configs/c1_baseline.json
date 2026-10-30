@@ -1,0 +1,18 @@
+{
+  "data_root": "data/Wildtrack_dataset",
+  "weights": "weights/yolo11n.pt",
+  "output": "outputs/E001_c1_baseline",
+  "camera": "C1",
+  "camera_calibration": "CVLab1",
+  "frame_start": 0,
+  "frame_stop": 500,
+  "frame_step": 5,
+  "frame_number_hz": 10,
+  "diagnostic_frames": [0, 5, 10],
+  "roi_m": [-3.0, 9.0, -9.0, 27.0],
+  "detector": {"device": 0, "classes": [0], "imgsz": 640, "conf": 0.25, "iou": 0.7, "half": false},
+  "tracker": {"tick_seconds": 0.5, "distance_threshold_m": 1.5, "hit_counter_max": 4, "initialization_delay": 0, "measurement_std_m": 0.35, "acceleration_std_mps2": 1.0, "initial_position_std_m": 0.5, "initial_velocity_std_mps": 2.0},
+  "evaluation": {"distance_threshold_m": 1.0, "visibility": "C1 view 0; all bbox coordinates nonnegative, positive width/height, positive intersection with 1920x1080 image; GT point in half-open fixed ROI. Truncated visible boxes included."},
+  "video": {"fps": 2.0, "width": 1600, "height": 800, "trail_seconds": 5.0},
+  "screenshots": [0, 100, 250, 495]
+}

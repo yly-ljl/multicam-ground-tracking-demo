@@ -1,0 +1,98 @@
+{
+  "data_root": "data/Wildtrack_dataset",
+  "weights": "weights/yolo11n.pt",
+  "frame_start": 800,
+  "frame_stop": 1400,
+  "frame_step": 5,
+  "frame_number_hz": 10,
+  "diagnostic_frames": [
+    0,
+    5,
+    10
+  ],
+  "roi_m": [
+    -3.0,
+    9.0,
+    -9.0,
+    27.0
+  ],
+  "detector": {
+    "device": 0,
+    "classes": [
+      0
+    ],
+    "imgsz": 640,
+    "conf": 0.25,
+    "iou": 0.7,
+    "half": false
+  },
+  "tracker": {
+    "tick_seconds": 0.5,
+    "distance_threshold_m": 1.5,
+    "hit_counter_max": 4,
+    "initialization_delay": 0,
+    "measurement_std_m": 0.35,
+    "acceleration_std_mps2": 1.0,
+    "initial_position_std_m": 0.5,
+    "initial_velocity_std_mps": 2.0,
+    "association_method": "greedy"
+  },
+  "video": {
+    "fps": 2.0,
+    "width": 1920,
+    "height": 1080,
+    "trail_seconds": 5.0
+  },
+  "screenshots": [
+    800,
+    1050,
+    1395
+  ],
+  "experiment": "B3_DEMO",
+  "cameras": [
+    "C1",
+    "C2",
+    "C3"
+  ],
+  "calibrations": {
+    "C1": "CVLab1",
+    "C2": "CVLab2",
+    "C3": "CVLab3"
+  },
+  "e001_output": "outputs/E001_c1_baseline",
+  "fusion_distance_m": 0.75,
+  "evaluation": {
+    "distance_threshold_m": 1.0,
+    "regions": [
+      "full_roi",
+      "common_projected"
+    ],
+    "gt_rule": "All GT ground points inside fixed ROI, independent of selected experiment cameras.",
+    "common_rule": "Positive camera depth and projected ground point in [0,1920)x[0,1080) for every C1/C2/C3; identical mask for GT and all prediction pools."
+  },
+  "detection_cameras": [
+    "C1",
+    "C2",
+    "C3"
+  ],
+  "observation_sources": {
+    "C1": "outputs/E003_improvement/validation/views/C1/observations.csv",
+    "C2": "outputs/E003_improvement/validation/views/C2/observations.csv",
+    "C3": "outputs/E003_improvement/validation/views/C3/observations.csv"
+  },
+  "passes": 1,
+  "overview_bounds": [
+    -6,
+    13,
+    -13,
+    29
+  ],
+  "zoom_bounds": [
+    0,
+    9,
+    9,
+    24
+  ],
+  "video_artifact": "outputs/PHASE5_delivery/reference_replay/prediction.mp4",
+  "reference_tracks": "outputs/E003_improvement/validation/B3/tracks.csv"
+}
