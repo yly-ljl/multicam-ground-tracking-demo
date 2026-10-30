@@ -13,4 +13,4 @@
 | [test_observation_diagnostics.py](test_observation_diagnostics.py) | E007父组/四集合/映射/固定采样及条件成员归属。 |
 | [test_demo_entry.py](test_demo_entry.py) | 新输出必填、旧结果保护；要求outputs根存在。 |
 
-推荐[run_cpu_tests.py](../scripts/run_cpu_tests.py)：默认先创建outputs根，明确排除两项外部标定测试，运行46项；--with-calibration包括全部48项。原测试文件未因资产缺省被删改。发布整理只验证默认46项，另两项标定测试本轮未运行。
+推荐[run_cpu_tests.py](../scripts/run_cpu_tests.py)：默认先创建outputs根，明确排除两项外部标定测试，运行46项；--with-calibration包括全部48项。运行入口和环境要求见[快速开始](../docs/QUICKSTART.md)。

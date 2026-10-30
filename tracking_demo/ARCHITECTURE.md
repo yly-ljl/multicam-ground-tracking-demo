@@ -1,6 +1,6 @@
 # tracking_demo模块
 
-更新：2026-10-30。返回[目录导航](../ARCHITECTURE.md)，按[代码路线](../docs/CODE_READING.md)阅读。全部Python文件来自当前源码，注释和排版原样保留。
+更新：2026-10-30。返回[目录导航](../ARCHITECTURE.md)，按[代码路线](../docs/CODE_READING.md)阅读。预测、评价、候选比较与诊断按职责分离。
 
 | 模块 | 职责 |
 |---|---|

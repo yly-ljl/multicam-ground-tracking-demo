@@ -39,8 +39,8 @@ def main():
     ax.set(xlim=(0, 14.5), ylim=(0, 4.6))
     ax.axis('off')
     ax.text(.1, 4.18, '固定三相机 → 米制地面轨迹', fontsize=20, fontweight='bold', color='#18364a')
-    labels = [('原图', '读者自行取得'), ('YOLO11n检测', 'person框 · 底边中心'), ('脚点投地面', '固定标定 · 米制XY'),
-              ('同帧融合', 'C1→C2→C3 · 等权'), ('时间跟踪', '贪心 · Kalman · d<1.5m'), ('展示与数值', '(X,Y,0) · 原图/BEV')]
+    labels = [('原图', '读者自行取得'), ('YOLO11n检测', '行人框 · 底边中心'), ('脚点投地面', '固定标定 · 米制XY'),
+              ('同帧融合', 'C1→C2→C3 · 等权'), ('时间跟踪', '贪心 · Kalman · d<1.5m'), ('展示与数值', '(X,Y,0) · 图像/地面图')]
     for i, (title, subtitle) in enumerate(labels):
         x = .1 + 2.38 * i
         ax.add_patch(FancyBboxPatch((x, 2.35), 2.15, 1.05, boxstyle='round,pad=.07', facecolor='#e9f2f5', edgecolor='#416a7c', linewidth=1.3))
@@ -53,17 +53,17 @@ def main():
     ax.text(5.625, .91, 'replay跳过检测与投影', ha='center', fontsize=10, color='#19543f')
     ax.add_patch(FancyArrowPatch((7.2, 1.25), (8.1, 2.3), arrowstyle='-|>', mutation_scale=14, color='#288566'))
     ax.add_patch(FancyBboxPatch((9.0, .65), 5.1, 1.0, boxstyle='round,pad=.08', facecolor='#fff5e5', edgecolor='#ae772b'))
-    ax.text(11.55, 1.28, 'GT只进入事后空间 / 整段身份评价与诊断', ha='center', fontsize=11, color='#76501f')
+    ax.text(11.55, 1.28, '真实标注GT只进入事后位置 / 身份评价与诊断', ha='center', fontsize=11, color='#76501f')
     ax.text(11.55, .91, '1m评价门 ≠ 0.75m融合门 ≠ d<1.5m时间门', ha='center', fontsize=9.5, color='#76501f')
-    ax.text(.12, .03, '默认B3；原图/标定/权重由读者自行取得。E007诊断标签不进入预测。', fontsize=10, color='#536674')
+    ax.text(.12, .03, 'C1/C2/C3为相机编号；B3为三相机方案。真实标注与诊断结果不进入预测。', fontsize=10, color='#536674')
     save(fig, 'pipeline')
 
     base = load(ROOT / 'results/summary/E004_identity.csv')
     global_rows = load(ROOT / 'results/summary/E005_identity.csv')
     soft = load(ROOT / 'results/summary/E006_identity.csv')
     segments = ['old_development', 'new_development', 'seen_reference']
-    fig, ax = plt.subplots(figsize=(10.5, 5.2))
-    variants = [('B2', base, '#264c66'), ('B3 默认', base, '#0b8b8b'), ('GLOBAL 未采用', global_rows, '#aeb9c0'), ('SOFT 未采用', soft, '#d99b54')]
+    fig, ax = plt.subplots(figsize=(11.5, 5.7))
+    variants = [('双相机 B2', base, '#264c66'), ('三相机 B3 默认', base, '#0b8b8b'), ('GLOBAL 未采用', global_rows, '#aeb9c0'), ('SOFT 未采用', soft, '#d99b54')]
     x = np.arange(3); width = .18
     for j, (label, data, color) in enumerate(variants):
         variant = ['B2', 'B3', 'B3_GLOBAL', 'B3_SOFT'][j]
@@ -72,12 +72,12 @@ def main():
         ax.bar(positions, values, width, color=color, label=label)
         for at, value in zip(positions, values):
             ax.text(at, value + 1.2, f'{value:.2f}', ha='center', fontsize=8.5, color='#213a4a')
-    ax.set_xticks(x, ['旧开发 0–495', '新开发 500–795', '已见参考 800–1395'])
-    ax.set_ylim(0, 100);ax.set_ylabel('地面点 IDF1@1m (%)')
-    ax.set_title('三路增加覆盖，身份分数仍低于双路；两个时间候选未采用', fontsize=13, pad=17)
+    ax.set_xticks(x, ['旧开发\n0–495', '新开发\n500–795', '已使用的对照片段\n800–1395'])
+    ax.set_ylim(0, 100);ax.set_ylabel('身份分数 IDF1（1米地面门限，%）')
+    ax.set_title('三相机与双相机的身份分数，以及两个未采用的时间关联候选', fontsize=13, pad=17)
     ax.legend(ncol=4, loc='upper center', bbox_to_anchor=(.5, .94), frameon=False, fontsize=9)
     ax.spines[['top','right']].set_visible(False);ax.grid(axis='y', alpha=.17);ax.set_axisbelow(True)
-    fig.text(.12, -.015, '全ROI · filtered_observed · 各段独立整段对应；不是官方WILDTRACK完整成绩。', fontsize=9, color='#536674')
+    fig.text(.12, -.015, '整个地面评价区域 · 当前有观测支持的轨迹 · 各段独立整段身份对应\n三个片段来自同一场景；对照片段已用于分析比较，不是未使用测试段。', fontsize=9, color='#536674')
     fig.tight_layout();save(fig, 'identity_comparison')
     print('Wrote two self-drawn SVGs from shipped numbers/code relationships.')
 

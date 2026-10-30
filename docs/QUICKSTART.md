@@ -1,6 +1,6 @@
 # 快速开始
 
-更新：2026-10-30。返回[首页](../README.md)。先选择“阅读”“images”“replay”；克隆不等于取得外部资产。
+更新：2026-10-30。返回[首页](../README.md)。阅读结果无需安装环境；生成视频可选择从原图推理（images）或从预测缓存回放（replay）。两者均需自行准备原图和标定。
 
 ## 环境
 
@@ -16,13 +16,13 @@ py -3.12 -m venv .venv
 .venv/Scripts/python.exe run_demo.py --help
 ```
 
-私有仓库需账号访问权限。上面是环境重建说明，本次发布整理没有执行安装，也未验证干净机器安装。requirements中的torch/torchvision URL绑定CPython3.12/Windows amd64/CUDA12.4发行；其它系统或Python版本需另做适配。当前`images`实现显式调用CUDA同步并检查CUDA模型，不支持仅改device就宣称CPU图像推理可用。
+私有仓库需账号访问权限。这些命令用于重建既有研究环境；全新机器安装尚未验证。requirements中的torch/torchvision URL绑定CPython3.12/Windows amd64/CUDA12.4发行；其它系统或Python版本需另做适配。当前images图像推理需要支持CUDA的NVIDIA GPU；replay读取已有预测缓存，可在CPU上运行，但仍需要原图和标定。
 
 ## 准备外部资产
 
-按[数据与模型](DATA_AND_MODELS.md)自行取得去畸变图像及标定，放到`data/Wildtrack_dataset/`，YOLO11n权重放`weights/yolo11n.pt`。public_demo_reference为800–1395/步长5，共120个三路时刻、360张图。`frame_stop=1400`不包含1400。
+按[数据与模型](DATA_AND_MODELS.md)自行取得去畸变图像及标定，放到`data/Wildtrack_dataset/`，YOLO11n权重放`weights/yolo11n.pt`。`public_demo_reference`使用C1/C2/C3三路相机的等权融合方案（B3）。帧编号800–1395、步长5，共120个时刻、360张图，对应已使用的对照片段：它原在E003用于验证，后已用于分析比较。`frame_stop=1400`不包含1400。
 
-`images`和`replay`展示不读GT；只需相应三路图像和C1/C2/C3标定。重算评价另外需要annotations_positions。不要将1400–1995用于本项目当前实验；该段仍保留。
+`images`和`replay`展示不读真实标注GT；只需相应三路图像和标定，images另需权重。重算评价另外需要annotations_positions。1400–1995仍未用于本项目实验。
 
 ## 从图像生成demo
 
@@ -43,7 +43,7 @@ Invoke-Item .\outputs\demo_images_01\pass_1\prediction.mp4
 
 replay读取`results/b3_reference/C1_observations.csv`等三份缓存，重新融合/默认贪心跟踪及绘图，不加载YOLO或进行GPU检测。它仍读取原图作背景并读取标定。输出prediction.mp4直接在新目录；默认play配置对应上述demo_cache_01。若换输出名，复制public配置并相应修改video_artifact再播放，或直接Invoke-Item。
 
-每次使用**不存在的新outputs子目录**，已有目录会被拒绝。新配置可以另存，不修改原研究配置或参考CSV。本轮使用发布副本代码做了一次120tick回放：3569组、4956状态，全部轨迹字段与参考一致，最大数值差0；没有再次执行images或旧性能实验。
+每次使用**不存在的新outputs子目录**，已有目录会被拒绝。新配置可以另存，不修改原研究配置或参考CSV。参考缓存的内容与范围见[缓存说明](../results/b3_reference/README.md)。
 
 ## CPU测试
 
@@ -53,8 +53,8 @@ replay读取`results/b3_reference/C1_observations.csv`等三份缓存，重新�
 .venv/Scripts/python.exe scripts/run_cpu_tests.py --with-calibration
 ```
 
-封装不改原测试，仅明确选择：默认46项合成/逻辑测试本轮通过；两项`GroundCamera`投影/Jacobian测试需外部标定，本轮未运行。两种模式均不检测、训练或运行完整跟踪序列。原unittest discover仍保留，但无标定时会在这两项失败；其中输出保护测试要求outputs根目录存在，封装会创建它。
+默认运行46项合成/逻辑测试；另外两项`GroundCamera`投影/Jacobian测试需外部标定，使用`--with-calibration`可包括它们。两种模式均不检测、训练或运行完整跟踪序列。原unittest discover仍保留，但无标定时会在这两项失败；其中输出保护测试要求outputs根目录存在，封装会创建它。
 
 ## 历史研究入口
 
-原configs及scripts原样保留，但很多路径指向未随首传提供的完整研究outputs/登记/逐帧距离导出。它们是研究与代码阅读入口，**不保证clone后直接运行**。四个参考CSV不能重建E001–E007所有中间证据。见[配置前提](../configs/ARCHITECTURE.md)、[脚本前提](../scripts/ARCHITECTURE.md)、[数值范围](../results/b3_reference/README.md)。旧evaluate/identity/trace可能写配置中的原输出，不应作为普通入门的“全部重跑”命令。
+原configs及scripts原样保留，但很多路径指向未随仓库提供的完整研究outputs/登记/逐帧距离导出。它们是研究与代码阅读入口，**不保证clone后直接运行**。四个参考CSV不能重建E001–E007所有中间证据。见[配置前提](../configs/ARCHITECTURE.md)、[脚本前提](../scripts/ARCHITECTURE.md)、[数值范围](../results/b3_reference/README.md)。旧evaluate/identity/trace可能写配置中的原输出，不应作为普通入门的“全部重跑”命令。
